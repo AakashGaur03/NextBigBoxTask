@@ -1,22 +1,54 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const HeroSection = () => {
 	const imageRef = useRef(null);
+	const titleRef = useRef(null);
+	const paragraphRef = useRef(null);
 
 	useEffect(() => {
-		// Entrance animation (slide in from right)
+		// Entrance animation for the image (3D slide-in from right)
 		gsap.fromTo(
 			imageRef.current,
-			{ x: 300, opacity: 0, rotateY: 30 }, // Initial state
-			{ x: 0, opacity: 1, rotateY: 0, duration: 1.2, ease: "power3.out" } // Target state
+			{ x: 300, opacity: 0, rotateY: 30 },
+			{ x: 0, opacity: 1, rotateY: 0, duration: 1.2, ease: "power3.out" }
 		);
+
+		// Entrance animation for the title (Slide in from left)
+		gsap.fromTo(
+			titleRef.current,
+			{ x: -100, opacity: 0 },
+			{ x: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.3 }
+		);
+
+		// Entrance animation for the paragraph (Fade in with delay)
+		gsap.fromTo(
+			paragraphRef.current,
+			{ opacity: 0, y: 20 },
+			{ opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: 0.6 }
+		);
+
+		// Scroll animation for the image (3D moving up)
+		gsap.to(imageRef.current, {
+			y: -150, // Moves image upwards
+			rotateX: 15, // Adds a slight 3D rotation
+			scale: 1.05,
+			scrollTrigger: {
+				trigger: imageRef.current,
+				start: "top bottom",
+				scrub: 1, // Smooth effect
+			},
+		});
 	}, []);
 
 	const handleMouseEnter = () => {
 		gsap.to(imageRef.current, {
-			rotateY: 15, // 3D rotation
-			scale: 1.05, // Slight zoom effect
+			rotateY: 15,
+			scale: 1.05,
 			duration: 0.3,
 			ease: "power2.out",
 		});
@@ -39,11 +71,11 @@ const HeroSection = () => {
 			}}
 		>
 			{/* Left Content (Text) */}
-			<div className="max-w-lg text-left md:ps-40">
-				<h1 className="text-6xl font-bold text-black leading-tight">
+			<div className="max-w-[650px] text-left md:ps-32">
+				<h1 ref={titleRef} className="text-7xl font-extrabold text-black leading-tight">
 					WE ARE <br /> NUTRIBIRD
 				</h1>
-				<p className="text-gray-700 mt-4 text-lg">
+				<p ref={paragraphRef} className="text-black mt-4 text-lg font-serif">
 					We are NutriBird, for bird owners to carefree give the best to their birds. We’re obsessed with making birds
 					look and perform at their best. We specialize in complete and balanced all-in-one nutrition formulas for all
 					bird species, at every life stage.
