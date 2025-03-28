@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroSection = () => {
@@ -11,7 +10,6 @@ const HeroSection = () => {
 	const paragraphRef = useRef(null);
 
 	useEffect(() => {
-		// Entrance animation for the image (3D slide-in from right)
 		gsap.fromTo(
 			imageRef.current,
 			{ x: 300, opacity: 0, rotateY: 30 },
@@ -64,13 +62,7 @@ const HeroSection = () => {
 	};
 
 	return (
-		<section
-			className="relative flex flex-col lg:flex-row items-center justify-between ps-8 lg:ps-16 py-20 min-h-screen"
-			style={{
-				background: "linear-gradient(to bottom, #f0f0f0, #d9d9d9)", // Soft gray gradient
-			}}
-		>
-			{/* Left Content (Text) */}
+		<section className="relative flex flex-col lg:flex-row items-center justify-between ps-8 lg:ps-16 py-20 min-h-screen mt-20">
 			<div className="max-w-[650px] text-left md:ps-32">
 				<h1 ref={titleRef} className="text-7xl font-extrabold text-black leading-tight">
 					WE ARE <br /> NUTRIBIRD
@@ -82,7 +74,6 @@ const HeroSection = () => {
 				</p>
 			</div>
 
-			{/* Right Content (Image) */}
 			<div className="mt-8 lg:mt-0">
 				<img
 					ref={imageRef}

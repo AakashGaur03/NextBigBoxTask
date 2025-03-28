@@ -3,3 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+	scroll-behavior: smooth;
+}
+.gradient {
+	background: linear-gradient(0deg, #c4c4c3, rgba(196, 196, 195, 0));
+}
+/* .gradient::after {
+	background: linear-gradient(180deg, #c4c4c3, rgba(196, 196, 195, 0));
+} */
