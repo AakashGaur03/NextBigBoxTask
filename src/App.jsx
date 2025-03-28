@@ -13,7 +13,6 @@ const App = () => {
 			<HeroSection />
 			<ExpertSupport />
 			<Testimonial />
-			<div className="h-screen"></div>
 		</>
 	);
 };
