@@ -10,7 +10,7 @@ const FlyingBird = () => {
 	});
 
 	// Horizontal (x) movement - right to left
-	const x = useTransform(scrollYProgress, [0, 0.5, 0.9, 1], ["-150%", "70%", "150%", "180%"]);
+	const x = useTransform(scrollYProgress, [0, 0.5, 0.9, 1], ["-150%", "70%", "151%", "180%"]);
 
 	// Vertical (y) movement - controlled descent
 	const y = useTransform(scrollYProgress, [0, 0.5, 0.9, 1], ["0%", "10%", "20%", "15%"]);
